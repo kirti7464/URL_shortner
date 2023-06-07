@@ -2,10 +2,7 @@ const URLModel = require('../models/urlModel');
 const validURL = require('valid-url');
 const shortId = require('shortid');
 const { SET_ASYNC, GET_ASYNC } = require('../utils/redisClient.js');
-const { checkValidURL } = require('../utils/axiosValidation.js');
-
-
-
+// const { checkValidURL } = require('../utils/axiosValidation.js');
 
 const createURL = async (req, res) => {
   try {
@@ -25,9 +22,9 @@ const createURL = async (req, res) => {
       });
     }
 
-    const isValidUrlAxios = await checkValidURL(longUrl)
+    // const isValidUrlAxios = await checkValidURL(longUrl)
 
-    if(isValidUrlAxios.isValid===false)return res.status(400).json({status : false, message : 'Invalid URL AXIOS'})
+    // if(isValidUrlAxios.isValid===false)return res.status(400).json({status : false, message : 'Invalid URL AXIOS'})
 
 
 
@@ -40,7 +37,7 @@ const createURL = async (req, res) => {
       const { shortUrl } = JSON.parse(cachedUrl);
       return res.status(200).send({
         status: true,
-        message: 'Already available',
+        
         data : {
           shortUrl
         },
@@ -64,7 +61,7 @@ const createURL = async (req, res) => {
       );
       return res.status(200).send({
         status: true,
-        message: 'Already available',
+        
         shortUrl: url.shortUrl,
       });
     }
@@ -125,7 +122,7 @@ const getUrl = async (req, res) => {
 
     // check if 400 0r 404
     if (!url) {
-      return res.status(400).json({
+      return res.status(404).json({
         status: false,
         message: 'URL not found or Incorrect URL',
       });

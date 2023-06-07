@@ -22,3 +22,22 @@ const startServer = async()=>{
     }
 }
 startServer()
+
+
+// const app = require("./app")
+// const mongoose = require("mongoose")
+
+// require("dotenv").config
+
+// const {PORT, MONGODB_URL}= process.env
+
+// function serverCOnnection(){
+//     mongoose.connect(MONGODB_URL).then(()=>console.log("Mongoose is connected")).catch((e)=>console.log("Mongoose is not connected"))
+
+// }
+// serverCOnnection()
+
+
+// app.listen(PORT,()=>{
+//     console.log("server is running at ",PORT);
+// })
